@@ -1,0 +1,15 @@
+
+#this is used to run powershell as another user for assessments
+
+Install-Module -Name SqlServer –AllowClobber -scope allusers
+gci "C:\Datastrike\" -recurse | unblock-file
+install-module credentialmanager -force
+
+
+runsas /netonly /user:datastrike\npatti powershell.exe
+powershell_is.exe
+
+Add-PSSnapin SqlServerCmdletSnapin100s
+Add-PSSnapin SqlServerProviderSnapin100
+
+module invoke-sqlcmd is not loaded
